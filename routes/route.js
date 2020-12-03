@@ -3,6 +3,10 @@
 
 module.exports = app => {
 
+  app.get('/', (req, res) => {
+    res.status(200).json({message: "welcome"})
+  })
+
   app.get('/question', routeQuestion.index);
   app.post('/question', routeQuestion.store);
   app.put('/question/:uuid', routeQuestion.update);
