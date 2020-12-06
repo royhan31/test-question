@@ -15,7 +15,7 @@ const swaggerDoc = {
     }
   ],
   schemes: [
-    [process.env.APP_URL == 'local' ? 'http' : 'https'].join()
+    [process.env.APP_URL || process.env.APP_URL == 'local' ? 'http' : 'https'].join()
   ],
   consumes: [
     'application/json'

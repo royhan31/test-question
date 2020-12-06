@@ -55,7 +55,7 @@ exports.update = (req, res) => {
               response.failed('Update question failed',errors,res);
             }
           })
-          .catch(err => response.failed('Update question failed',err,res))
+          .catch(() => response.failed('Update question failed',{ message: "UUID not found" },res));
 }
 
 exports.destroy = (req, res) => {
@@ -70,14 +70,14 @@ exports.destroy = (req, res) => {
               response.failed('Delete question failed',errors,res);
             }
           })
-          .catch(err => response.failed('Delete question failed',err,res))
+          .catch(() => response.failed('Update question failed',{ message: "UUID not found" },res));
 }
 
 exports.details = async (req, res) => {
   const { uuid } = req.params;
   const question = await Question.findOne({ where: { uuid }})
                   .then(data => data)
-                  .catch(err => response.failed('Details question failed',err,res))
+                  .catch(() => response.failed('Update question failed',{ message: "UUID not found" },res));
 
   res.status(200);
   response.ok(question == null ? [] : question, res);
