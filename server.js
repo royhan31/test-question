@@ -12,8 +12,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 //cors origin and body parser
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
-
+app.use(cors());;
 //Routing
 route(app);
 

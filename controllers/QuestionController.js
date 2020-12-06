@@ -1,13 +1,12 @@
 const response = require('./../api/apiUtils'),
     { Question }  = require('./../models'),
-    {getPagination, getPagingData} = require('./../helpers/pagination'),
+    { getPagination, getPagingData } = require('./../helpers/pagination'),
     { v4: uuidv4 } = require('uuid');
 
 exports.index = async (req, res) => {
 
   const { size, page } = req.query;
   const { limit, offset } = getPagination(size, page);
-  console.log(limit, offset);
   const questions = await Question.findAndCountAll({
     limit,
     offset,
@@ -15,8 +14,9 @@ exports.index = async (req, res) => {
     order: [
       ['createdAt', 'DESC']
     ]
-  }).then(data => data)
-    .catch(err => {
+  })
+  .then(data => data)
+  .catch(err => {
       res.status(500);
       response.failed('Failed get all question',err,res);
       return

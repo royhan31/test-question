@@ -1,5 +1,5 @@
 const getPagination = (size, page) => {
-  const limit = size && !isNaN(size) ? +size : 5;
+  const limit = size && !isNaN(size) && size > 5 ? +size : 5;
   const offset = page && !isNaN(page) && page > 0 ? (page * limit) - limit : 0;
   return { limit, offset };
 };
