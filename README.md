@@ -61,7 +61,7 @@ or
   or using live swagger ui
 
   https://test-question-app.herokuapp.com/api-docs/
-  * please using http not https
+  * please using https not http
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
