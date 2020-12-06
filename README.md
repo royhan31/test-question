@@ -60,7 +60,7 @@ or
 
   or using live swagger ui
 
-  http://test-question-app.herokuapp.com/question
+  https://test-question-app.herokuapp.com/api-docs/
   * please using http not https
 
 ## License
