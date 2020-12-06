@@ -46,14 +46,9 @@ exports.update = (req, res) => {
   const { question, author } = req.body;
 
   Question.update({question, updatedBy: author},{where: { uuid }})
-          .then(data => {
-            if(data > 0) {
-              res.status(200);
-              response.ok({message: "Question has been updated"}, res);
-            }else {
-              const errors = {message: "UUID not found"};
-              response.failed('Update question failed',errors,res);
-            }
+          .then(() => {
+            res.status(200);
+            response.ok({message: "Question has been updated"}, res);
           })
           .catch(() => response.failed('Update question failed',{ message: "UUID not found" },res));
 }
@@ -70,7 +65,7 @@ exports.destroy = (req, res) => {
               response.failed('Delete question failed',errors,res);
             }
           })
-          .catch(() => response.failed('Update question failed',{ message: "UUID not found" },res));
+          .catch(err => response.failed('delete question failed',err,res));
 }
 
 exports.details = async (req, res) => {
